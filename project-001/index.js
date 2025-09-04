@@ -64,8 +64,12 @@ async function Scrape(URL, Selector) {
                 "Accept":"text/html"
     }})
     const $ = cheerio.load(res.data);
-    const text = $(`${Selector}`).text();
-    console.log(styleText(['red','bold'],text));
+    
+    // console.log(Array.isArray(text));
+    $(`${Selector}`).each((index, value) =>{
+        const text = $(value).text();
+        console.log(styleText(['red','bold'],`Index: ${index}. Text: ${text}`));
+    })
 
     } catch(err) {
         console.log("Error:",err);
