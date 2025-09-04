@@ -67,8 +67,8 @@ async function Scrape(URL, Selector) {
     
     // console.log(Array.isArray(text));
     $(`${Selector}`).each((index, value) =>{
-        const text = $(value).text();
-        console.log(styleText(['red','bold'],`Index: ${index}. Text: ${text}`));
+        const text = $(value).text().replace(/\s\s+/g, ""); //.replace method to get rid of all the whitespaces
+        console.log(styleText(['red','bold'],`${index}. Text: ${text}`));
     })
 
     } catch(err) {
